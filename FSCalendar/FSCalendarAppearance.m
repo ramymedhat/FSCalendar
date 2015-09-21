@@ -17,6 +17,7 @@
 @interface FSCalendarAppearance ()
 
 @property (strong, nonatomic) NSMutableDictionary *backgroundColors;
+@property (strong, nonatomic) NSMutableDictionary *backgroundStrokeColors;
 @property (strong, nonatomic) NSMutableDictionary *titleColors;
 @property (strong, nonatomic) NSMutableDictionary *subtitleColors;
 
@@ -48,6 +49,13 @@
         _backgroundColors[@(FSCalendarCellStateDisabled)]    = [UIColor clearColor];
         _backgroundColors[@(FSCalendarCellStatePlaceholder)] = [UIColor clearColor];
         _backgroundColors[@(FSCalendarCellStateToday)]       = kPink;
+        
+        _backgroundStrokeColors = [NSMutableDictionary dictionaryWithCapacity:4];
+        _backgroundStrokeColors[@(FSCalendarCellStateNormal)]      = [UIColor clearColor];
+        _backgroundStrokeColors[@(FSCalendarCellStateSelected)]    = kBlue;
+        _backgroundStrokeColors[@(FSCalendarCellStateDisabled)]    = [UIColor clearColor];
+        _backgroundStrokeColors[@(FSCalendarCellStatePlaceholder)] = [UIColor clearColor];
+        _backgroundStrokeColors[@(FSCalendarCellStateToday)]       = kPink;
         
         _titleColors = [NSMutableDictionary dictionaryWithCapacity:4];
         _titleColors[@(FSCalendarCellStateNormal)]      = [UIColor darkTextColor];
@@ -265,6 +273,51 @@
 - (UIColor *)todaySelectionColor
 {
     return _backgroundColors[@(FSCalendarCellStateToday|FSCalendarCellStateSelected)];
+}
+
+- (void)setSelectionStrokeColor:(UIColor *)color
+{
+    if (color) {
+        _backgroundStrokeColors[@(FSCalendarCellStateSelected)] = color;
+    } else {
+        [_backgroundStrokeColors removeObjectForKey:@(FSCalendarCellStateSelected)];
+    }
+    [_calendar.collectionView.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
+}
+
+- (UIColor *)selectionStrokeColor
+{
+    return _backgroundStrokeColors[@(FSCalendarCellStateSelected)];
+}
+
+- (void)setTodayStrokeColor:(UIColor *)todayColor
+{
+    if (todayColor) {
+        _backgroundStrokeColors[@(FSCalendarCellStateToday)] = todayColor;
+    } else {
+        [_backgroundStrokeColors removeObjectForKey:@(FSCalendarCellStateToday)];
+    }
+    [_calendar.collectionView.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
+}
+
+- (UIColor *)todayStrokeColor
+{
+    return _backgroundStrokeColors[@(FSCalendarCellStateToday)];
+}
+
+- (void)setTodaySelectionStrokeColor:(UIColor *)todaySelectionColor
+{
+    if (todaySelectionColor) {
+        _backgroundStrokeColors[@(FSCalendarCellStateToday|FSCalendarCellStateSelected)] = todaySelectionColor;
+    } else {
+        [_backgroundStrokeColors removeObjectForKey:@(FSCalendarCellStateToday|FSCalendarCellStateSelected)];
+    }
+    [_calendar.collectionView.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
+}
+
+- (UIColor *)todaySelectionStrokeColor
+{
+    return _backgroundStrokeColors[@(FSCalendarCellStateToday|FSCalendarCellStateSelected)];
 }
 
 - (void)setEventColor:(UIColor *)eventColor

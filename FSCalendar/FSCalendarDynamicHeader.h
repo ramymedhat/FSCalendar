@@ -29,6 +29,7 @@
 @interface FSCalendarAppearance (Dynamic)
 
 @property (readonly, nonatomic) NSMutableDictionary *backgroundColors;
+@property (readonly, nonatomic) NSMutableDictionary *backgroundStrokeColors;
 @property (readonly, nonatomic) NSMutableDictionary *titleColors;
 @property (readonly, nonatomic) NSMutableDictionary *subtitleColors;
 

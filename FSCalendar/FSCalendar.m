@@ -388,6 +388,7 @@ static BOOL FSCalendarInInterfaceBuilder = NO;
     cell.image = [self imageForDate:cell.date];
     cell.subtitle  = [self subtitleForDate:cell.date];
     cell.hasEvent = [self hasEventForDate:cell.date];
+    cell.dateBackgroundColor = [self backgroundColorForDate:cell.date];
     cell.dateIsSelected = [self.selectedDates containsObject:cell.date];
     cell.dateIsToday = [cell.date fs_isEqualToDateForDay:_today];
     cell.selected &= cell.dateIsSelected&&!cell.dateIsPlaceholder;
@@ -1210,6 +1211,14 @@ static BOOL FSCalendarInInterfaceBuilder = NO;
 {
     if (_dataSource && [_dataSource respondsToSelector:@selector(calendar:imageForDate:)]) {
         return [_dataSource calendar:self imageForDate:date];
+    }
+    return nil;
+}
+
+- (UIColor *)backgroundColorForDate:(NSDate *)date
+{
+    if (_dataSource && [_dataSource respondsToSelector:@selector(calendar:backgroundColorForDate:)]) {
+        return [_dataSource calendar:self backgroundColorForDate:date];
     }
     return nil;
 }
