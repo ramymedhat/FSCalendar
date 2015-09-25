@@ -34,10 +34,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPJ-CL-JyG" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="64" width="600" height="360"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="320"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="360" id="WIA-b7-boT"/>
+                                    <constraint firstAttribute="height" constant="320" id="WIA-b7-boT"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="lty-fT-aMK" id="uaL-Rc-pxm"/>

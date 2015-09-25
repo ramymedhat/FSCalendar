@@ -17,13 +17,13 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
         super.viewDidLoad()
         calendar.selectDate(NSDate())
         calendar.scrollDirection = .Vertical
-        calendar.appearance.titleTextSize = 16.0
-        calendar.appearance.weekdayTextSize = 16.0
+        calendar.appearance.titleTextSize = 14.0
+        calendar.appearance.weekdayTextSize = 14.0
         
         calendar.appearance.selectionColor = UIColor.grayColor()
-        calendar.appearance.selectionStrokeColor = UIColor.clearColor()
+        calendar.appearance.selectionStrokeColor = UIColor.grayColor()
         
-        calendar.appearance.todayStrokeColor = UIColor.blackColor()//  UIColor(red: 14.0/256.0, green: 69.0/256.0, blue: 221.0/256.0, alpha: 1.0)
+        calendar.appearance.todayStrokeColor = UIColor.clearColor()//  UIColor(red: 14.0/256.0, green: 69.0/256.0, blue: 221.0/256.0, alpha: 1.0)
         calendar.appearance.todayColor = UIColor.clearColor()
         calendar.appearance.titleTodayColor = UIColor.blackColor()//   UIColor(red: 14.0/256.0, green: 69.0/256.0, blue: 221.0/256.0, alpha: 1.0)
         
