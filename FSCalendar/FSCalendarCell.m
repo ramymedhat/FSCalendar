@@ -79,24 +79,15 @@
 - (void)setBounds:(CGRect)bounds
 {
     [super setBounds:bounds];
-    CGFloat titleHeight = self.bounds.size.height*4.0/6.0;
+    CGFloat titleHeight = self.bounds.size.height*4.5/6.0;
     
-    if (self.isSelected || (self.dateIsSelected && !_deselecting)) {
-        CGFloat diameter = MIN(self.bounds.size.height*3.0/6.0,self.bounds.size.width);
-        _backgroundLayer.frame = CGRectMake((self.bounds.size.width-diameter)/2,
-                                            (titleHeight-diameter)/2,
-                                            diameter,
-                                            diameter);
-    }
-    else {
-        CGFloat diameter = MIN(self.bounds.size.height*3.0/6.0,self.bounds.size.width);
-        _backgroundLayer.frame = CGRectMake((self.bounds.size.width-diameter)/2,
-                                            (titleHeight-diameter)/2,
-                                            diameter,
-                                            diameter);
-    }
+    CGFloat diameter = MIN(self.bounds.size.height*3.5/6.0,self.bounds.size.width);
+    _backgroundLayer.frame = CGRectMake((self.bounds.size.width-diameter)/2,
+                                        (titleHeight-diameter)/2,
+                                        diameter,
+                                        diameter);
     
-    CGFloat diameter = self.bounds.size.height*3.5/6.0;
+    diameter = self.bounds.size.height*4.0/6.0;
     _ringLayer.frame = CGRectMake((self.bounds.size.width-diameter)/2,
                                         (titleHeight-diameter)/2,
                                         diameter,
@@ -197,7 +188,7 @@
                                           self.fs_width,
                                           subtitleHeight);
     } else {
-        _titleLabel.frame = CGRectMake(0, 0, self.fs_width, floor(self.contentView.fs_height*4.0/6.0));
+        _titleLabel.frame = CGRectMake(0, 0, self.fs_width, floor(self.contentView.fs_height*4.5/6.0));
         _subtitleLabel.hidden = YES;
     }
     _backgroundLayer.hidden = !self.selected && !self.dateIsToday && !self.dateIsSelected  && !self.dateBackgroundColor;
@@ -214,7 +205,7 @@
     
     if (_image) {
         _imageLayer.hidden = NO;
-        _imageLayer.frame = CGRectMake((self.fs_width-_image.size.width)*0.5, self.fs_height-_image.size.height-2.5, _image.size.width, _image.size.height);
+        _imageLayer.frame = CGRectMake((self.fs_width-_image.size.width)*0.5, self.fs_height-_image.size.height-1.2, _image.size.width, _image.size.height);
         _imageLayer.contents = (id)_image.CGImage;
     } else {
         _imageLayer.hidden = YES;
